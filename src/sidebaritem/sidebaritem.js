@@ -8,28 +8,34 @@ import { removeHTMLTags } from '../helpers';
 
 class SidebarItemComponent extends React.Component {
 
-    render() {
+    render(){
 
         const { _index, _note, classes, selectedNoteIndex } = this.props;
 
         return(
             <div key={_index}>
-                <ListItem
-                    className={classes.listItem}
-                    selected={selectedNoteIndex === _index}
-                    alignItem='flex-start'>
+            <ListItem
+                className={classes.listItem}
+                selected={selectedNoteIndex === _index}
+                alignItems='flex-start'>
                     <div
-                    claseName={classes.textSection}
-                    onClick={() => this.selectNote(_note, _index)}>
+                        className={classes.textSection}
+                        onClick={() => this.selectNote(_note, _index)}>
                         <ListItemText
-                         primary={_note.title}
-                         secondary={removeHTMLTags(_note.body.substring(0, 30)) + '...'}>
-
-                         </ListItemText>
+                            primary={_note.title}
+                            secondary={removeHTMLTags(_note.body.substring(0, 30)) + '...'}></ListItemText>
                     </div>
-                </ListItem>
+                    <DeleteIcon onClick={() => this.deleteNote(_note)}
+                        className={classes.deleteIcon}></DeleteIcon>
+            </ListItem>            
             </div>
         );
+    }
+    selectNote = (n, i) => this.props.selectNote(n, i);
+    deleteNote = (note) => {
+        if(window.confirm(`Are you sure you want to delete: ${note.title}`)) {
+            this.props.deleteNote(note);
+        }
     }
 }
 
