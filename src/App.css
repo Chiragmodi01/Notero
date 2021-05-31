@@ -6,6 +6,11 @@ html, body {
   padding: 0;
   overflow: hidden;
 }
+.brandlogo{
+  width: 30px;
+  margin-right: 8px;
+  display: flex;
+}
 #evernote-container {
   height: 100%;
   box-sizing: border-box;

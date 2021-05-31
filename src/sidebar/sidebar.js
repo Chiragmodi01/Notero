@@ -20,7 +20,8 @@ class SidebarComponent extends React.Component {
         if(notes){
             return(
                 <div className={classes.sidebarContainer}>
-                    <div className={classes.brandName}>Notero</div>
+                    
+                    <div className={classes.brandName}><img className="brandlogo" src="/favicon.ico"/> Notero</div>
                     <Button
                     onClick={this.newNoteBtnClick}
                     className={classes.newNoteBtn}>{this.state.addingNote ? 'Cancel' : 'New Note'}</Button>
